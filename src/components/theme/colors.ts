@@ -1,0 +1,16 @@
+export const COLORS = {
+  white: '#FFFFFF',
+  black: '#000000',
+  grey100: '#EAECEB',
+  grey200: '#E9ECEF',
+  grey600: '#868E96',
+  grey700: '#474d52',
+  grey800: '#242629',
+  grey900: '#0D131B',
+  other100: '#E6CCFF',
+  other800: '#730099',
+  purple400: '#8F6CD8',
+  blue300: '#8FA2FF',
+  border: '#adb5bd',
+  borderFocus: '#a2aab3',
+};
