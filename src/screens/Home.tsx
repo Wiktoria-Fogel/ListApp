@@ -1,4 +1,4 @@
-import {FlatList, SafeAreaView} from 'react-native';
+import {FlatList, SafeAreaView, View} from 'react-native';
 import React, {useState} from 'react';
 import styled from 'styled-components/native';
 import {COLORS, VerticalSpacer} from '../components/theme';
@@ -12,7 +12,7 @@ export const Home: React.FC = () => {
   const loadMoreItems = () => {};
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
       <MainWrapper>
         <SearchInput
           placeholder={'Search...'}
@@ -28,9 +28,10 @@ export const Home: React.FC = () => {
         <FlatList
           data={publicEvents}
           showsVerticalScrollIndicator={false}
+          // contentContainerStyle={{paddingBottom: 20}}
           ItemSeparatorComponent={() => <VerticalSpacer height={10} />}
           //style={styles.flatList}
-          onEndReached={loadMoreItems}
+          // onEndReached={loadMoreItems}
           keyExtractor={item => item.id}
           //zrobić empty component i tłumaczenia
           ListEmptyComponent={() => <Title>{'Lista jest pusta'}</Title>}
@@ -57,9 +58,12 @@ export const Home: React.FC = () => {
 };
 
 const MainWrapper = styled.View`
-  padding: 16px;
+  padding: 16px 16px 0px 16px;
   height: 100%;
   width: 100%;
+  flex: 1;
+  justify-content: center;
+  margin-bottom: auto;
   background-color: ${COLORS.blue300};
 `;
 
@@ -75,7 +79,7 @@ const InformationWrapper = styled.View`
 
 const ItemWrapper = styled.View`
   padding: 4px 12px;
-  height: 5%;
+  height: 86px;
   flex: auto;
   width: 100%;
   border-radius: 12px;
