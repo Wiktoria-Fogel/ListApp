@@ -46,6 +46,8 @@ export const Home: React.FC = () => {
     },
   ];
 
+  const loadMoreItems = () => {};
+
   return (
     <SafeAreaView>
       <MainWrapper>
@@ -60,6 +62,7 @@ export const Home: React.FC = () => {
           data={list}
           ItemSeparatorComponent={() => <VerticalSpacer height={12} />}
           //style={styles.flatList}
+          onEndReached={loadMoreItems}
           keyExtractor={item => item.id}
           ListEmptyComponent={() => <Text>{'Lista jest pusta'}</Text>}
           renderItem={({item}) => (
