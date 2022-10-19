@@ -10,6 +10,7 @@ export const COLORS = {
   other100: '#E6CCFF',
   other800: '#730099',
   purple400: '#8F6CD8',
+  blue200: '#668cff',
   blue300: '#8FA2FF',
   border: '#adb5bd',
   borderFocus: '#a2aab3',

@@ -1,51 +1,14 @@
-import {FlatList, SafeAreaView, Text} from 'react-native';
+import {FlatList, SafeAreaView} from 'react-native';
 import React, {useState} from 'react';
 import styled from 'styled-components/native';
 import {COLORS, VerticalSpacer} from '../components/theme';
 import {SearchInput} from '../components/atoms/SearchInput';
+import {useEventsState} from '../containers/events';
+import {Avatar} from '../components/atoms/Avatar';
 
 export const Home: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
-
-  const list = [
-    {
-      id: '1',
-      name: 'Argentyna',
-    },
-    {
-      id: '2',
-      name: 'Grecja',
-    },
-    {
-      id: '3',
-      name: 'Chiny',
-    },
-    {
-      id: '4',
-      name: 'Kongo',
-    },
-    {
-      id: '5',
-      name: 'Meksyk',
-    },
-    {
-      id: '6',
-      name: 'Hiszpania',
-    },
-    {
-      id: '7',
-      name: 'Finlandia',
-    },
-    {
-      id: '8',
-      name: 'Rosja',
-    },
-    {
-      id: '9',
-      name: 'Australia',
-    },
-  ];
-
+  const {publicEvents} = useEventsState();
   const loadMoreItems = () => {};
 
   return (
@@ -58,21 +21,35 @@ export const Home: React.FC = () => {
           onClear={() => setSearchValue('')}
         />
         <VerticalSpacer height={12} />
+        {/* {publicEvents.map(item => {
+          const r = item.filter(item => item.name.startsWith(searchValue));
+          console.log(r);
+        })} */}
         <FlatList
-          data={list}
-          ItemSeparatorComponent={() => <VerticalSpacer height={12} />}
+          data={publicEvents}
+          showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <VerticalSpacer height={10} />}
           //style={styles.flatList}
           onEndReached={loadMoreItems}
           keyExtractor={item => item.id}
-          ListEmptyComponent={() => <Text>{'Lista jest pusta'}</Text>}
-          renderItem={({item}) => (
-            <>
-              <ItemWrapper key={item.id}>
-                <Text>{item.name}</Text>
-              </ItemWrapper>
-              <VerticalSpacer height={8} />
-            </>
-          )}
+          //zrobić empty component i tłumaczenia
+          ListEmptyComponent={() => <Title>{'Lista jest pusta'}</Title>}
+          renderItem={({item}) => {
+            return (
+              <>
+                <ItemWrapper key={item.id}>
+                  <Row>
+                    <Avatar source={item.actor.avatar_url} />
+                    <InformationWrapper>
+                      <Title>{item.actor.display_login}</Title>
+                      <VerticalSpacer height={4} />
+                      <Description>{item.repo.name}</Description>
+                    </InformationWrapper>
+                  </Row>
+                </ItemWrapper>
+              </>
+            );
+          }}
         />
       </MainWrapper>
     </SafeAreaView>
@@ -83,13 +60,36 @@ const MainWrapper = styled.View`
   padding: 16px;
   height: 100%;
   width: 100%;
-  background-color: ${COLORS.grey800};
+  background-color: ${COLORS.blue300};
+`;
+
+const Row = styled.View`
+  flex-direction: row;
+  height: 100%;
+`;
+
+const InformationWrapper = styled.View`
+  padding: 8px 12px;
+  flex: 1;
 `;
 
 const ItemWrapper = styled.View`
-  padding: 8px;
-  height: 64px;
+  padding: 4px 12px;
+  height: 5%;
+  flex: auto;
   width: 100%;
-  border-radius: 8px;
-  background-color: ${COLORS.purple400};
+  border-radius: 12px;
+  background-color: ${COLORS.grey800};
+`;
+
+const Title = styled.Text`
+  font-size: 14px;
+  font-family: 'Raleway-Bold';
+  color: ${COLORS.white};
+`;
+
+const Description = styled.Text`
+  font-size: 12px;
+  font-family: 'Raleway-Medium';
+  color: ${COLORS.white};
 `;
