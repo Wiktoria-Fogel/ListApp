@@ -19,7 +19,6 @@ const Wrapper = styled.View`
   height: 100%;
   width: 100%;
   align-items: center;
-  background-color: antiquewhite;
 `;
 
 const Title = styled.Text`
