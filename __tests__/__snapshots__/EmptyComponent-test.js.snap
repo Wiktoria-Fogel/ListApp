@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyComponent renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": "100%",
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <View
+    height={12}
+    style={
+      Array [
+        Object {
+          "height": 12,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "fontFamily": "Raleway-Bold",
+          "fontSize": 18,
+        },
+      ]
+    }
+  >
+    test
+  </Text>
+</View>
+`;

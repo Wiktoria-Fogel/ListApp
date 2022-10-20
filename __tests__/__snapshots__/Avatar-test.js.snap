@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "height": 60,
+        "marginTop": 8,
+        "width": 60,
+      },
+    ]
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "test",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "borderRadius": 30,
+          "height": "100%",
+          "width": "100%",
+        },
+      ]
+    }
+  />
+</View>
+`;

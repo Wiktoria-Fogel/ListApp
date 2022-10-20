@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput renders correctly 1`] = `
+<View
+  isFocused={false}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#ffffff",
+        "borderColor": "#adb5bd",
+        "borderRadius": 8,
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "center",
+        "paddingLeft": 12,
+        "paddingRight": 12,
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <RNSVGSvgView
+    align="xMidYMid"
+    bbHeight="20"
+    bbWidth="20"
+    fill="none"
+    focusable={false}
+    height={20}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Object {
+          "flex": 0,
+          "height": 20,
+          "width": 20,
+        },
+      ]
+    }
+    vbHeight={20}
+    vbWidth={20}
+    width={20}
+  >
+    <RNSVGGroup
+      fill={null}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGPath
+        clipRule={0}
+        d="M12.655 12.06h.659l3.533 3.55a.88.88 0 010 1.241.88.88 0 01-1.242 0l-3.541-3.541v-.659l-.225-.233a5.417 5.417 0 01-4.45 1.233c-2.317-.391-4.167-2.325-4.45-4.658a5.42 5.42 0 016.058-6.058c2.334.283 4.267 2.133 4.659 4.45a5.417 5.417 0 01-1.234 4.45l.233.225zM4.565 8.31a3.745 3.745 0 003.75 3.75 3.745 3.745 0 003.75-3.75 3.745 3.745 0 00-3.75-3.75 3.745 3.745 0 00-3.75 3.75z"
+        fill={
+          Object {
+            "payload": 4289574333,
+            "type": 0,
+          }
+        }
+        fillRule={0}
+        propList={
+          Array [
+            "fill",
+            "fillRule",
+          ]
+        }
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+  <TextInput
+    onBlur={[Function]}
+    onFocus={[Function]}
+    placeholderTextColor="#868E96"
+    returnKeyType="done"
+    style={
+      Array [
+        Object {
+          "color": "#0D131B",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "fontWeight": "400",
+          "marginLeft": 10,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+        },
+      ]
+    }
+    textAlignVertical="center"
+  />
+</View>
+`;
