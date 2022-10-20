@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components/native';
 import {COLORS, VerticalSpacer} from '../theme';
 
-interface EmptyComponentProps {
+type EmptyComponentProps = {
   title: string;
-}
+};
 
 export const EmptyComponent: React.FC<EmptyComponentProps> = ({title}) => {
   return (
@@ -19,6 +19,7 @@ const Wrapper = styled.View`
   height: 100%;
   width: 100%;
   align-items: center;
+  background-color: antiquewhite;
 `;
 
 const Title = styled.Text`

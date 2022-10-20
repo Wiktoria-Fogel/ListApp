@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from 'react';
 import {createContainer} from 'unstated-next';
-import {PublicEvent} from '../api/models/PublicEvent';
-import {getPublicEvents} from '../utils/apiQueries';
+import {PublicEvent} from '../types/api';
+import {getPublicEventsFromApi} from '../utils/apiQueries';
 
 const useEvents = createContainer(() => {
   const [publicEvents, setPublicEvents] = useState<Array<PublicEvent>>([]);
@@ -11,7 +11,7 @@ const useEvents = createContainer(() => {
 
   const fetchPublicEvents = useCallback((page: number) => {
     setIsLoading(true);
-    getPublicEvents(page)
+    getPublicEventsFromApi(page)
       .then(json => {
         setControlPage(json);
         setIsLoading(false);
@@ -24,7 +24,7 @@ const useEvents = createContainer(() => {
 
   useEffect(() => {
     setIsLoading(true);
-    getPublicEvents(1)
+    getPublicEventsFromApi(1)
       .then(json => {
         setPublicEvents(json);
         setIsLoading(false);

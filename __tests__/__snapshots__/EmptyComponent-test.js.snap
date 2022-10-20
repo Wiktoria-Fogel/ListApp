@@ -6,6 +6,7 @@ exports[`EmptyComponent renders correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "backgroundColor": "antiquewhite",
         "height": "100%",
         "width": "100%",
       },

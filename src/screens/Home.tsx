@@ -1,14 +1,13 @@
 import {FlatList, SafeAreaView, ActivityIndicator} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
 import {COLORS, VerticalSpacer} from '../components/theme';
 import {SearchInput} from '../components/atoms/SearchInput';
 import {useEventsState} from '../containers/events';
 import {STYLES} from '../components/theme/styles';
-import {PublicEvent} from '../api/models/PublicEvent';
 import {EmptyComponent} from '../components/atoms/EmptyComponent';
-import {strings} from '../assets/strings/strings';
-import {ItemList} from '../components/atoms/ItemList';
+import {content} from '../utils/content';
+import {ListItem} from '../components/atoms/ListItem';
 
 export const Home: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -19,30 +18,20 @@ export const Home: React.FC = () => {
     fetchPublicEvents,
     isLoading,
   } = useEventsState();
-  const [filteredList, setFilteredList] = useState<Array<PublicEvent>>();
   const [page, setPage] = useState<number>(2);
 
-  useEffect(() => {
-    if (publicEvents) {
-      if (searchValue !== '') {
-        const filterResult = publicEvents.filter(item => {
-          const re = new RegExp(`^${searchValue}`, 'i');
-          return item.actor.display_login.match(re) || item.repo.name.match(re);
-        });
-        setFilteredList(filterResult);
-      } else {
-        setFilteredList(publicEvents);
-      }
-    }
-  }, [publicEvents, searchValue]);
+  const filterResult = publicEvents.filter(item => {
+    const regex = new RegExp(`^${searchValue}`, 'i');
+    return item.actor.display_login.match(regex) || item.repo.name.match(regex);
+  });
 
   const loadMoreItems = () => {
     if (controlPage.length === 20) {
-      setPublicEvents(publicEvents?.concat(controlPage));
+      setPublicEvents(publicEvents.concat(controlPage));
       setPage(page + 1);
       fetchPublicEvents(page + 1);
     } else {
-      setPublicEvents(publicEvents?.concat(controlPage));
+      setPublicEvents(publicEvents.concat(controlPage));
     }
   };
 
@@ -50,23 +39,23 @@ export const Home: React.FC = () => {
     <SafeAreaView style={STYLES.safeArea}>
       <MainWrapper>
         <SearchInput
-          placeholder={strings.HomeScreen.search}
+          placeholder={content.HomeScreen.search}
           value={searchValue}
           onChangeText={text => setSearchValue(text)}
           onClear={() => setSearchValue('')}
         />
         <VerticalSpacer height={12} />
         <FlatList
-          data={filteredList}
+          data={filterResult}
           showsVerticalScrollIndicator={false}
           ItemSeparatorComponent={() => <VerticalSpacer height={10} />}
           onEndReached={loadMoreItems}
           keyExtractor={(item, index) => item.id + index}
           ListEmptyComponent={() => (
-            <EmptyComponent title={strings.HomeScreen.emptyList} />
+            <EmptyComponent title={content.HomeScreen.emptyList} />
           )}
           renderItem={({item}) => {
-            return <ItemList item={item} />;
+            return <ListItem item={item} />;
           }}
         />
         {isLoading && (

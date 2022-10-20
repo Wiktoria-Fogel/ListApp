@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-interface AvatarProps {
+type AvatarProps = {
   source: string;
-}
+};
 
 export const Avatar: React.FC<AvatarProps> = ({source}) => {
   return (

@@ -1,14 +1,14 @@
 import React, {memo} from 'react';
 import styled from 'styled-components/native';
-import {PublicEvent} from '../../api/models/PublicEvent';
+import {PublicEvent} from '../../types/api';
 import {COLORS, VerticalSpacer} from '../theme';
 import {Avatar} from './Avatar';
 
-interface ItemListProps {
+type ListItemProps = {
   item: PublicEvent;
-}
+};
 
-export const ItemList: React.FC<ItemListProps> = memo(({item}) => {
+export const ListItem: React.FC<ListItemProps> = memo(({item}) => {
   return (
     <ItemWrapper key={item.id}>
       <Row>

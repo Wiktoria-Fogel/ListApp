@@ -4,9 +4,9 @@ import styled from 'styled-components/native';
 import {CancelIcon, MagnifierIcon} from '../../assets/svg/Icons';
 import {COLORS} from '../theme';
 
-interface SearchInputProps {
+type SearchInputProps = {
   onClear: () => void;
-}
+};
 
 export const SearchInput: React.FC<SearchInputProps & TextInputProps> = ({
   onClear,
