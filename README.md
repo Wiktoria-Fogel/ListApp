@@ -1,6 +1,6 @@
 # ListApp
 
-### Instalation
+### Installation
 
 - git clone ListApp
 - `yarn install`
